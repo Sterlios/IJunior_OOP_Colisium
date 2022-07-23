@@ -6,7 +6,7 @@ namespace Colisium
     {
         static void Main(string[] args)
         {
-
+            
         }
     }
 }

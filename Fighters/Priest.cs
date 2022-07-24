@@ -1,11 +1,8 @@
 ﻿using Colisium.Fighters.Actions;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Colisium.Fighters
 {
-    class Priest : BaseFigther,  IHealingable
+    class Priest : BaseFighter,  IHealingable
     {
         //Лечится с некоторым шансом
         private float _healingPercentage;

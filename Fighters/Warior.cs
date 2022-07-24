@@ -1,11 +1,8 @@
 ﻿using Colisium.Fighters.Actions;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Colisium.Fighters
 {
-    class Warior : BaseFigther, IDoubleAttack
+    class Warior : BaseFighter, IDoubleAttack
     {
         //двойной удар
 

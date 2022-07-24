@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Colisium.Control.Console;
+using Colisium.Display.Console;
 
 namespace Colisium
 {
@@ -6,7 +7,9 @@ namespace Colisium
     {
         static void Main(string[] args)
         {
-            
+            FightRing fightRing = new FightRing("Бойцовский клуб", new ConsoleDisplay(), new ConsoleDataInput());
+
+            fightRing.Run();
         }
     }
 }

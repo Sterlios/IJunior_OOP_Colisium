@@ -1,11 +1,8 @@
 ﻿using Colisium.Fighters.Actions;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Colisium.Fighters
 {
-    class IceMen : BaseFigther, IStunable
+    class IceMen : BaseFighter, IStunable
     {
         // Стан врага
 

@@ -1,11 +1,9 @@
 ﻿using Colisium.Fighters.Actions;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Colisium.Fighters
 {
-    abstract class BaseFigther : IAttackable, IDamagable, IAbilityble
+    abstract class BaseFighter : IAttackable, IDamagable, IAbilityble
     {
         private float _health;
         private float _armor;
@@ -14,7 +12,7 @@ namespace Colisium.Fighters
         private float _damageDeviation;
         private Random _random;
 
-        public BaseFigther(float health = 1000, int armor = 20, int damage = 50, float abilityChance = 30)
+        public BaseFighter(float health = 1000, int armor = 20, int damage = 50, float abilityChance = 30)
         {
             _health = health;
             _armor = armor;

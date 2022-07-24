@@ -1,11 +1,8 @@
 ﻿using Colisium.Fighters.Actions;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Colisium.Fighters
 {
-    class Assassin : BaseFigther, IDodgable
+    class Assassin : BaseFighter, IDodgable
     {
         // шанс уклонения 
 

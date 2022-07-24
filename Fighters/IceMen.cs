@@ -6,7 +6,7 @@ namespace Colisium.Fighters
     {
         // Стан врага
 
-        public IceMen()
+        public IceMen(StringCreator stringCreator) : base(fighterClass: "IceMen", stringCreator: stringCreator)
         {
 
         }
@@ -19,6 +19,11 @@ namespace Colisium.Fighters
         public void Stun()
         {
 
+        }
+
+        public override BaseFighter ToCopy()
+        {
+            return new IceMen(StringCreator);
         }
     }
 }

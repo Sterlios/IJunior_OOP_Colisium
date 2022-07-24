@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Colisium.Control.Console
+﻿namespace Colisium.Control.Console
 {
     class ConsoleDataInput : IDataInput
     {
@@ -27,6 +23,11 @@ namespace Colisium.Control.Console
             _answer = System.Console.ReadLine();
 
             return _answer;
+        }
+
+        public void ClearPosition()
+        {
+            _position = null;
         }
 
         private void ClearText()

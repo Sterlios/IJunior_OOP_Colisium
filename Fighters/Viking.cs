@@ -6,7 +6,7 @@ namespace Colisium.Fighters
     {
         // Щанс крита
 
-        public Viking()
+        public Viking(StringCreator stringCreator) : base(fighterClass: "Viking", stringCreator: stringCreator)
         {
 
         }
@@ -19,6 +19,11 @@ namespace Colisium.Fighters
         public void IncraeseCtiticalDamageChance()
         {
             Attack();
+        }
+
+        public override BaseFighter ToCopy()
+        {
+            return new Viking(StringCreator);
         }
     }
 }

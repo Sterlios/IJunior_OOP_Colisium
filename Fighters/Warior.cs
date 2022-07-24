@@ -6,7 +6,7 @@ namespace Colisium.Fighters
     {
         //двойной удар
 
-        public Warior()
+        public Warior(StringCreator stringCreator) : base(fighterClass: "Warior", stringCreator: stringCreator)
         {
 
         }
@@ -20,6 +20,11 @@ namespace Colisium.Fighters
         {
             Attack();
             Attack();
+        }
+
+        public override BaseFighter ToCopy()
+        {
+            return new Warior(StringCreator);
         }
     }
 }

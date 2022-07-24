@@ -7,7 +7,7 @@ namespace Colisium.Fighters
         //Лечится с некоторым шансом
         private float _healingPercentage;
 
-        public Priest()
+        public Priest(StringCreator stringCreator) : base(fighterClass: "Priest", stringCreator: stringCreator)
         {
             _healingPercentage = 50;
         }
@@ -20,6 +20,11 @@ namespace Colisium.Fighters
         public void Heal()
         {
 
+        }
+
+        public override BaseFighter ToCopy()
+        {
+            return new Priest(StringCreator);
         }
     }
 }

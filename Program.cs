@@ -7,7 +7,7 @@ namespace Colisium
     {
         static void Main(string[] args)
         {
-            FightRing fightRing = new FightRing("Бойцовский клуб", new ConsoleDisplay(), new ConsoleDataInput());
+            FightRing fightRing = new FightRing("Бойцовский клуб", new StringCreator(new ConsoleDisplay()), new ConsoleDataInput());
 
             fightRing.Run();
         }

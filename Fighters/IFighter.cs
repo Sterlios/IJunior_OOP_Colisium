@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Colisium.Fighters
+﻿namespace Colisium.Fighters
 {
     interface IFighter
     {
+        void ShowInfo();
+        BaseFighter ToCopy();
     }
 }

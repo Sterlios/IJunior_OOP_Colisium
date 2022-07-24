@@ -1,52 +1,53 @@
 ﻿using Colisium.Control;
-using Colisium.Display;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Colisium
 {
-    class User : IString
+    class User
     {
+        private StringCreator _stringCreator;
         private IDataInput _dataInput;
-        private IDisplay _display;
-        private string _text;
         public string Name { get; private set; }
 
-        public User(string name, IDataInput dataInput, IDisplay display)
+        public User(string name, IDataInput dataInput, StringCreator stringCreator)
         {
-            _display = display;
             _dataInput = dataInput;
             Name = name;
+            _stringCreator = stringCreator;
 
-            _text = "Появился новый клиент " + Name;
-            _display.Display(this);
+            _stringCreator.ShowMessage("Появился новый клиент " + Name);
         }
 
         public bool getAnswerYesOrNo()
         {
             const string YesWord = "y";
             const string NoWord = "n";
+            bool isCorrect = true;
 
             string command = _dataInput.GetText();
 
             if (command.ToLower() == YesWord)
             {
-                return true;
+                isCorrect = true;
             }
             else if (command.ToLower() == NoWord)
             {
-                return false;
+                isCorrect = false;
             }
             else
             {
-                return getAnswerYesOrNo();
+                isCorrect = getAnswerYesOrNo();
             }
+
+            _dataInput.ClearPosition();
+            return isCorrect;
         }
 
-        public override string ToString()
+        public string getAnswer()
         {
-            return _text;
+            _dataInput.ClearPosition();
+            string answer = _dataInput.GetText();
+            _dataInput.ClearPosition();
+            return answer;
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Colisium.Fighters
     {
         // шанс уклонения 
 
-        public Assassin()
+        public Assassin(StringCreator stringCreator) :base(fighterClass: "Assassin", stringCreator: stringCreator)
         {
 
         }
@@ -19,6 +19,11 @@ namespace Colisium.Fighters
         public void Dodge()
         {
 
+        }
+
+        public override BaseFighter ToCopy()
+        {
+            return new Assassin(StringCreator);
         }
     }
 }

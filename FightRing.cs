@@ -92,7 +92,6 @@ namespace Colisium
         {
             _managers = new List<Manager>();
             _managers.Add(new Manager("Ваня", _stringCreator));
-            _managers.Add(new Manager("Gtnz", _stringCreator));
         }
     }
 }

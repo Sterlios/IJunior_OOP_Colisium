@@ -18,11 +18,12 @@ namespace Colisium.Fighters
 
         public void Dodge()
         {
-
+            StringCreator.ShowMessage(Class + " уклонился от удара");
         }
 
         public override BaseFighter ToCopy()
         {
+            int сумка = 5;
             return new Assassin(StringCreator);
         }
     }

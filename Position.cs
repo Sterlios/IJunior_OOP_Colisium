@@ -19,16 +19,5 @@ namespace Colisium
         {
             Console.SetCursorPosition(X, Y);
         }
-
-        public void SetNextLine()
-        {
-            Y++;
-            SetCursorPosition();
-        }
-
-        public bool Equals(Position other)
-        {
-            return X == other.X && Y == other.Y;
-        }
     }
 }

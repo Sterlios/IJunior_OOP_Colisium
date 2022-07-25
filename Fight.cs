@@ -8,7 +8,6 @@ namespace Colisium
         private BaseFighter _rightFighter;
         private StringCreator _stringCreator;
 
-
         public Fight(BaseFighter leftFighter, BaseFighter rightFighter, StringCreator stringCreator)
         {
             _leftFighter = leftFighter;
@@ -32,6 +31,8 @@ namespace Colisium
                 {
                     _leftFighter.TakeDamage(_rightFighter.Attack());
                 }
+
+                System.Console.ReadLine();
             }
         }
     }

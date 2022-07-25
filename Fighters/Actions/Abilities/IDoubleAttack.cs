@@ -2,6 +2,6 @@
 {
     interface IDoubleAttack
     {
-        void TakeSecondDamage();
+        void TakeDubleDamage();
     }
 }

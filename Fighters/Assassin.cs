@@ -6,14 +6,20 @@ namespace Colisium.Fighters
     {
         // шанс уклонения 
 
-        public Assassin(StringCreator stringCreator) :base(fighterClass: "Assassin", stringCreator: stringCreator)
-        {
+        public Assassin(StringCreator stringCreator) : base(fighterClass: "Assassin", stringCreator: stringCreator) { }
 
-        }
-
-        public override void UseAbility()
+        protected override void TakeDamage(float damage)
         {
-            Dodge();
+            bool abilitySuccess = Random.Next(100) < AbilityChance;
+
+            if (abilitySuccess)
+            {
+                Dodge();
+            }
+            else
+            {
+                base.TakeDamage(damage);
+            }
         }
 
         public void Dodge()
@@ -23,7 +29,6 @@ namespace Colisium.Fighters
 
         public override BaseFighter ToCopy()
         {
-            int сумка = 5;
             return new Assassin(StringCreator);
         }
     }

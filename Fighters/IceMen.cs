@@ -6,24 +6,13 @@ namespace Colisium.Fighters
     {
         // Стан врага
 
-        public IceMen(StringCreator stringCreator) : base(fighterClass: "IceMen", stringCreator: stringCreator)
-        {
-
-        }
-
-        public override void UseAbility()
-        {
-            Stun();
-        }
+        public IceMen(StringCreator stringCreator) : base(fighterClass: "IceMen", stringCreator: stringCreator) { }
 
         public void Stun()
         {
 
         }
 
-        public override BaseFighter ToCopy()
-        {
-            return new IceMen(StringCreator);
-        }
+        public override BaseFighter ToCopy() => new IceMen(StringCreator);
     }
 }

@@ -2,28 +2,29 @@
 
 namespace Colisium.Fighters
 {
-    class Viking : BaseFighter, ICriticable
+    class Viking : BaseFighter
     {
-        // Щанс крита
+        private float _critMultiple;
 
         public Viking(StringCreator stringCreator) : base(fighterClass: "Viking", stringCreator: stringCreator)
         {
-
+            _critMultiple = 2f;
         }
 
-        public override void UseAbility()
+        public override float[] Attack() => Random.Next(100) < AbilityChance ? DoCriticalAttack() : base.Attack();
+
+        public float[] DoCriticalAttack()
         {
-            IncraeseCtiticalDamageChance();
+            float oldDamage = Damage;
+            float newDamage = Damage * _critMultiple;
+
+            ChangeDamage(newDamage);
+            float[] currentDamage = base.Attack();
+            ChangeDamage(oldDamage);
+
+            return currentDamage;
         }
 
-        public void IncraeseCtiticalDamageChance()
-        {
-            Attack();
-        }
-
-        public override BaseFighter ToCopy()
-        {
-            return new Viking(StringCreator);
-        }
+        public override BaseFighter ToCopy() => new Viking(StringCreator);
     }
 }

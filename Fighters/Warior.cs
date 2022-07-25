@@ -2,29 +2,14 @@
 
 namespace Colisium.Fighters
 {
-    class Warior : BaseFighter, IDoubleAttack
+    class Warior : BaseFighter
     {
-        //двойной удар
+        public Warior(StringCreator stringCreator) : base(fighterClass: "Warior", stringCreator: stringCreator) { }
 
-        public Warior(StringCreator stringCreator) : base(fighterClass: "Warior", stringCreator: stringCreator)
-        {
+        public override float[] Attack() => Random.Next(100) < AbilityChance ? TakeManyDamage() : base.Attack();
 
-        }
+        public float[] TakeManyDamage() => Attack(2);
 
-        public override void UseAbility()
-        {
-            TakeSecondDamage();
-        }
-
-        public void TakeSecondDamage()
-        {
-            Attack();
-            Attack();
-        }
-
-        public override BaseFighter ToCopy()
-        {
-            return new Warior(StringCreator);
-        }
+        public override BaseFighter ToCopy() => new Warior(StringCreator);
     }
 }

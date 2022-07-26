@@ -99,7 +99,7 @@ namespace Colisium
                 new Assassin(_stringCreator),
                 new Priest(_stringCreator),
                 new Warior(_stringCreator),
-                new IceMen(_stringCreator),
+                new IceMan(_stringCreator),
                 new Viking(_stringCreator)
             };
         }
@@ -108,13 +108,7 @@ namespace Colisium
         {
             BaseFighter chosenFighter = null;
 
-            if (_chosenFighterPosition is null)
-            {
-                _chosenFighterPosition = new Position();
-            }
-
-            _chosenFighterPosition.SetCursorPosition();
-
+            SetChosenFighterPosition();
             _stringCreator.ShowMessage(User.Name + ", Выберите бойца для сражения " + fighterSide);
 
             string fighterName = User.getAnswer();
@@ -135,6 +129,16 @@ namespace Colisium
             _chosenFighterPosition = null;
 
             return chosenFighter;
+        }
+
+        private void SetChosenFighterPosition()
+        {
+            if (_chosenFighterPosition is null)
+            {
+                _chosenFighterPosition = new Position();
+            }
+
+            _chosenFighterPosition.SetCursorPosition();
         }
     }
 }

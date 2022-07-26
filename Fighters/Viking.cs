@@ -1,4 +1,5 @@
 ﻿using Colisium.Fighters.Actions;
+using System.Collections.Generic;
 
 namespace Colisium.Fighters
 {
@@ -11,15 +12,15 @@ namespace Colisium.Fighters
             _critMultiple = 2f;
         }
 
-        public override float[] Attack() => Random.Next(100) < AbilityChance ? DoCriticalAttack() : base.Attack();
+        public override Damage Attack() => Random.Next(100) < AbilityChance ? DoCriticalAttack() : base.Attack();
 
-        public float[] DoCriticalAttack()
+        public Damage DoCriticalAttack()
         {
             float oldDamage = Damage;
             float newDamage = Damage * _critMultiple;
 
             ChangeDamage(newDamage);
-            float[] currentDamage = base.Attack();
+            Damage currentDamage = base.Attack();
             ChangeDamage(oldDamage);
 
             return currentDamage;

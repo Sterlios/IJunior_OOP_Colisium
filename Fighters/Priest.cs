@@ -1,4 +1,5 @@
 ﻿using Colisium.Fighters.Actions;
+using System.Collections.Generic;
 
 namespace Colisium.Fighters
 {
@@ -12,19 +13,17 @@ namespace Colisium.Fighters
             _healingPercentage = 0.1f;
         }
 
-        public override float[] Attack() => Random.Next(100) < AbilityChance ? Heal() : base.Attack();
+        public override Damage Attack() => Random.Next(100) < AbilityChance ? Heal() : base.Attack();
 
-        public float[] Heal()
+        public Damage Heal()
         {
-            float deltaHealth = MaxHealth * _healingPercentage;
-            ChangeHealth(deltaHealth);
+            if(IsStun == false)
+            {
+                float deltaHealth = MaxHealth * _healingPercentage;
+                ChangeHealth(deltaHealth);
+            }
 
-            float oldDamage = Damage;
-            float newDamage = 0;
-
-            ChangeDamage(newDamage);
-            float[] currentDamage = base.Attack();
-            ChangeDamage(oldDamage);
+            Damage currentDamage = new Damage(new List<float>());
 
             return currentDamage;
         }

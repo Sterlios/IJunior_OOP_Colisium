@@ -2,10 +2,8 @@
 
 namespace Colisium.Fighters
 {
-    class Assassin : BaseFighter, IDodgable
+    class Assassin : BaseFighter
     {
-        // шанс уклонения 
-
         public Assassin(StringCreator stringCreator) : base(fighterClass: "Assassin", stringCreator: stringCreator) { }
 
         protected override void TakeDamage(float damage)

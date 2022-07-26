@@ -1,5 +1,6 @@
 ﻿using Colisium.Fighters.Actions;
 using System;
+using System.Collections.Generic;
 
 namespace Colisium.Fighters
 {
@@ -11,6 +12,7 @@ namespace Colisium.Fighters
         public StringCreator StringCreator { get; private set; }
         public string Class { get; private set; }
         public bool IsAlive => Health > 0;
+        public bool IsStun { get; private set; }
         public float Damage { get; private set; }
         public int Percent { get; }
         public float AbilityChance { get; private set; }
@@ -32,11 +34,14 @@ namespace Colisium.Fighters
             Percent = 100;
         }
 
-        public virtual float[] Attack() => Attack(1);
+        public virtual Damage Attack() => Attack(1);
 
-        public virtual void TakeDamage(float[] damages)
+        public virtual void TakeDamage(Damage damages)
         {
-            foreach (float damage in damages)
+            IsStun = damages.IsStun;
+            List<float> damageList = damages.GetDamage();
+
+            foreach (float damage in damageList)
             {
                 TakeDamage(damage);
             }
@@ -49,23 +54,30 @@ namespace Colisium.Fighters
 
         public abstract BaseFighter ToCopy();
 
-        protected float[] Attack(int hitsNumber)
+        protected Damage Attack(int hitsNumber)
         {
-            float[] damages = new float[hitsNumber];
+            List<float> damages = new List<float>();
 
-            for (int i = 0; i < damages.Length; i++)
+            if (IsStun == false)
             {
-                if (Damage > 0)
+                for (int i = 0; i < hitsNumber; i++)
                 {
-                    int minDamage = (int)(Damage > _damageDeviation ? Damage - _damageDeviation : 1);
-                    int maxDamage = (int)(Damage > _damageDeviation ? Damage + _damageDeviation : _damageDeviation * 2);
-                    damages[i] = Random.Next(minDamage, maxDamage);
+                    if (Damage > 0)
+                    {
+                        int minDamage = (int)(Damage > _damageDeviation ? Damage - _damageDeviation : 1);
+                        int maxDamage = (int)(Damage > _damageDeviation ? Damage + _damageDeviation : _damageDeviation * 2);
+                        damages.Add(Random.Next(minDamage, maxDamage));
 
-                    StringCreator.ShowMessage(Class + " Нанес урон " + damages[i]);
+                        StringCreator.ShowMessage(Class + " Нанес урон " + damages[i]);
+                    }
                 }
             }
+            else
+            {
+                StringCreator.ShowMessage(Class + " застанен");
+            }
 
-            return damages;
+            return new Damage(damages);
         }
 
         protected void ChangeDamage(float newDamage)

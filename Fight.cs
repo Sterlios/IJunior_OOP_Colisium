@@ -32,7 +32,25 @@ namespace Colisium
                     _leftFighter.TakeDamage(_rightFighter.Attack());
                 }
 
-                System.Console.ReadLine();
+                _stringCreator.ShowMessage("\n");
+            }
+
+            Finish();
+        }
+
+        private void Finish()
+        {
+            if (_leftFighter.IsAlive == false && _rightFighter.IsAlive == false)
+            {
+                _stringCreator.ShowMessage("Ничья!");
+            }
+            else if (_leftFighter.IsAlive == false)
+            {
+                _stringCreator.ShowMessage(_rightFighter.Class + " справа Победил");
+            }
+            else if (_rightFighter.IsAlive == false)
+            {
+                _stringCreator.ShowMessage(_leftFighter.Class + " слева Победил");
             }
         }
     }

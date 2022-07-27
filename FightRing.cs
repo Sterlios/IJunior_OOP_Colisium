@@ -9,7 +9,7 @@ namespace Colisium
         private StringCreator _stringCreator;
         private IDataInput _dataInput;
         private List<Manager> _managers;
-        private bool _opening;
+        private bool _isOpening;
         private string _name;
 
         public FightRing(string name, StringCreator stringCreator, IDataInput dataInput)
@@ -26,7 +26,7 @@ namespace Colisium
         {
             Open();
 
-            while (_opening)
+            while (_isOpening)
             {
                 foreach (Manager manager in _managers)
                 {
@@ -39,7 +39,7 @@ namespace Colisium
 
         private void WorkManager(Manager manager)
         {
-            while (manager.Working)
+            while (manager.IsWorking)
             {
                 if (manager.User is null)
                 {
@@ -60,29 +60,29 @@ namespace Colisium
         {
             if (_managers.Count > 0)
             {
-                _opening = true;
+                _isOpening = true;
                 _stringCreator.ShowMessage("Ринг " + _name + " открыт.");
 
                 foreach (Manager manager in _managers)
                 {
-                    manager.BeginWork();
+                    manager.StartWork();
                 }
             }
         }
 
         private void Close()
         {
-            _opening = false;
+            _isOpening = false;
 
             foreach (Manager manager in _managers)
             {
-                if (manager.Working)
+                if (manager.IsWorking)
                 {
-                    _opening = manager.Working;
+                    _isOpening = manager.IsWorking;
                 }
             }
 
-            if (_opening == false)
+            if (_isOpening == false)
             {
                 _stringCreator.ShowMessage("Ринг " + _name + " закрыт.");
             }

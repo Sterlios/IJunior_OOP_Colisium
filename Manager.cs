@@ -9,7 +9,7 @@ namespace Colisium
         private StringCreator _stringCreator;
         private string _name;
         private Position _answerCursorPosition;
-        public bool Working { get; private set; }
+        public bool IsWorking { get; private set; }
         public User User { get; private set; }
 
         public Manager(string name, StringCreator stringCreator)
@@ -32,7 +32,7 @@ namespace Colisium
             leftFighter = null;
             rightFighter = null;
 
-            if (Working)
+            if (IsWorking)
             {
                 _stringCreator.ShowMessage("Менеджер " + _name + " работает");
 
@@ -49,24 +49,24 @@ namespace Colisium
             }
         }
 
-        public void BeginWork()
+        public void StartWork()
         {
-            if (Working == false)
+            if (IsWorking == false)
             {
                 _stringCreator.ShowMessage("Менеджер " + _name + " начал работать");
-                Working = true;
+                IsWorking = true;
             }
         }
 
         public bool EndWork()
         {
-            if (Working)
+            if (IsWorking)
             {
                 _stringCreator.ShowMessage("Менеджер " + _name + " закончил работать");
-                Working = false;
+                IsWorking = false;
             }
 
-            return Working;
+            return IsWorking;
         }
 
         private bool ToContinue()

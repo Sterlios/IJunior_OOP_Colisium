@@ -37,10 +37,10 @@ namespace Colisium
 
             _leftFighter.ShowInfo();
             _rightFighter.ShowInfo();
-            Finish();
+            End();
         }
 
-        private void Finish()
+        private void End()
         {
             if (_leftFighter.IsAlive == false && _rightFighter.IsAlive == false)
             {
@@ -50,7 +50,7 @@ namespace Colisium
             {
                 _stringCreator.ShowMessage(_rightFighter.Class + " справа Победил");
             }
-            else if (_rightFighter.IsAlive == false)
+            else
             {
                 _stringCreator.ShowMessage(_leftFighter.Class + " слева Победил");
             }

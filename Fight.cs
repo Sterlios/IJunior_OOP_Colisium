@@ -35,6 +35,8 @@ namespace Colisium
                 _stringCreator.ShowMessage("\n");
             }
 
+            _leftFighter.ShowInfo();
+            _rightFighter.ShowInfo();
             Finish();
         }
 

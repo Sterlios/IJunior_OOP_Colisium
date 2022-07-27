@@ -12,10 +12,10 @@ namespace Colisium
             X = x > -1 ? x : Console.CursorLeft;
             Y = y > -1 ? y : Console.CursorTop;
 
-            SetCursorPosition();
+            MoveCursor();
         }
 
-        public void SetCursorPosition()
+        public void MoveCursor()
         {
             Console.SetCursorPosition(X, Y);
         }

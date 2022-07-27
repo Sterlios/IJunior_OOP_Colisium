@@ -7,17 +7,17 @@ namespace Colisium
     {
         private List<BaseFighter> _fighters;
         private StringCreator _stringCreator;
-        public bool Working { get; private set; }
         private string _name;
+        private Position _answerCursorPosition;
+        public bool Working { get; private set; }
         public User User { get; private set; }
-        private Position _chosenFighterPosition;
 
         public Manager(string name, StringCreator stringCreator)
         {
             _name = name;
             _stringCreator = stringCreator;
 
-            initializeFighters();
+            InitializeFighters();
 
             _stringCreator.ShowMessage("Менеджер " + _name + " принят на работу");
         }
@@ -73,8 +73,29 @@ namespace Colisium
         {
             if (User is User)
             {
+                MoveCursor();
                 _stringCreator.ShowMessage(User.Name + ", продолжаем работу? (Y/N) ");
-                return User.getAnswerYesOrNo();
+                const string YesWord = "y";
+                const string NoWord = "n";
+                bool isCorrect;
+
+                string command = User.GetAnswer();
+
+                if (command.ToLower() == YesWord)
+                {
+                    isCorrect = true;
+                }
+                else if (command.ToLower() == NoWord)
+                {
+                    isCorrect = false;
+                }
+                else
+                {
+                    isCorrect = ToContinue();
+                }
+
+                _answerCursorPosition = null;
+                return isCorrect;
             }
             else
             {
@@ -92,7 +113,7 @@ namespace Colisium
             }
         }
 
-        private void initializeFighters()
+        private void InitializeFighters()
         {
             _fighters = new List<BaseFighter>()
             {
@@ -108,10 +129,10 @@ namespace Colisium
         {
             BaseFighter chosenFighter = null;
 
-            SetChosenFighterPosition();
+            MoveCursor();
             _stringCreator.ShowMessage(User.Name + ", Выберите бойца для сражения " + fighterSide);
 
-            string fighterName = User.getAnswer();
+            string fighterName = User.GetAnswer();
 
             foreach (BaseFighter fighter in _fighters)
             {
@@ -126,19 +147,19 @@ namespace Colisium
                 chosenFighter = GetFighter(fighterSide);
             }
 
-            _chosenFighterPosition = null;
+            _answerCursorPosition = null;
 
             return chosenFighter;
         }
 
-        private void SetChosenFighterPosition()
+        private void MoveCursor()
         {
-            if (_chosenFighterPosition is null)
+            if (_answerCursorPosition is null)
             {
-                _chosenFighterPosition = new Position();
+                _answerCursorPosition = new Position();
             }
 
-            _chosenFighterPosition.SetCursorPosition();
+            _answerCursorPosition.MoveCursor();
         }
     }
 }

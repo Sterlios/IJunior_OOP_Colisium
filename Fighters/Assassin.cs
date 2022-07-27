@@ -1,10 +1,18 @@
-﻿using Colisium.Fighters.Actions;
-
-namespace Colisium.Fighters
+﻿namespace Colisium.Fighters
 {
     class Assassin : BaseFighter
     {
         public Assassin(StringCreator stringCreator) : base(fighterClass: "Assassin", stringCreator: stringCreator) { }
+
+        public void Dodge()
+        {
+            StringCreator.ShowMessage(Class + " уклонился от удара");
+        }
+
+        public override BaseFighter ToCopy()
+        {
+            return new Assassin(StringCreator);
+        }
 
         protected override void TakeDamage(float damage)
         {
@@ -18,16 +26,6 @@ namespace Colisium.Fighters
             {
                 base.TakeDamage(damage);
             }
-        }
-
-        public void Dodge()
-        {
-            StringCreator.ShowMessage(Class + " уклонился от удара");
-        }
-
-        public override BaseFighter ToCopy()
-        {
-            return new Assassin(StringCreator);
         }
     }
 }

@@ -5,7 +5,6 @@ namespace Colisium.Fighters
 {
     class Priest : BaseFighter
     {
-        //Лечится с некоторым шансом
         private float _healingPercentage;
 
         public Priest(StringCreator stringCreator) : base(fighterClass: "Priest", stringCreator: stringCreator)

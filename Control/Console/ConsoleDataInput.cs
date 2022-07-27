@@ -19,7 +19,7 @@
 
             ClearText();
 
-            _position.SetCursorPosition();
+            _position.MoveCursor();
             _answer = System.Console.ReadLine();
 
             return _answer;
@@ -32,7 +32,7 @@
 
         private void ClearText()
         {
-            _position.SetCursorPosition();
+            _position.MoveCursor();
 
             for (int i = 0; i < _answer.Length; i++)
             {

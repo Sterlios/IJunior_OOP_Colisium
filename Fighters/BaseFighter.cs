@@ -6,19 +6,18 @@ namespace Colisium.Fighters
 {
     abstract class BaseFighter : IFighter
     {
+        private float _armor;
+        private float _damageDeviation;
+        public bool IsAlive => Health > 0;
         public float Health { get; private set; }
-        public float MaxHealth { get; }
         public Random Random { get; private set; }
         public StringCreator StringCreator { get; private set; }
         public string Class { get; private set; }
-        public bool IsAlive => Health > 0;
         public bool IsStun { get; private set; }
         public float Damage { get; private set; }
-        public int Percent { get; }
         public float AbilityChance { get; private set; }
-
-        private float _armor;
-        private float _damageDeviation;
+        public float MaxHealth { get; }
+        public int Percent { get; }
 
         public BaseFighter(StringCreator stringCreator, string fighterClass, float health = 1000, int armor = 20, int damage = 50, float abilityChance = 30)
         {

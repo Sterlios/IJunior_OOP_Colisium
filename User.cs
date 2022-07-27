@@ -17,34 +17,8 @@ namespace Colisium
             _stringCreator.ShowMessage("Появился новый клиент " + Name);
         }
 
-        public bool getAnswerYesOrNo()
+        public string GetAnswer()
         {
-            const string YesWord = "y";
-            const string NoWord = "n";
-            bool isCorrect = true;
-
-            string command = _dataInput.GetText();
-
-            if (command.ToLower() == YesWord)
-            {
-                isCorrect = true;
-            }
-            else if (command.ToLower() == NoWord)
-            {
-                isCorrect = false;
-            }
-            else
-            {
-                isCorrect = getAnswerYesOrNo();
-            }
-
-            _dataInput.ClearPosition();
-            return isCorrect;
-        }
-
-        public string getAnswer()
-        {
-            _dataInput.ClearPosition();
             string answer = _dataInput.GetText();
             _dataInput.ClearPosition();
             return answer;

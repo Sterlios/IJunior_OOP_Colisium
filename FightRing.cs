@@ -19,7 +19,7 @@ namespace Colisium
             _dataInput = dataInput;
             _stringCreator.ShowMessage("Создан новый ринг: " + _name);
 
-            initializeManagers();
+            InitializeManagers();
         }
 
         public void Run()
@@ -88,7 +88,7 @@ namespace Colisium
             }
         }
 
-        private void initializeManagers()
+        private void InitializeManagers()
         {
             _managers = new List<Manager>();
             _managers.Add(new Manager("Ваня", _stringCreator));

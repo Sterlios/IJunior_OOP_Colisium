@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Colisium.Fighters
 {
-    abstract class BaseFighter : IFighter
+    abstract class BaseFighter
     {
         private float _armor;
         private float _damageDeviation;
@@ -53,18 +53,18 @@ namespace Colisium.Fighters
 
         public abstract BaseFighter ToCopy();
 
-        protected Damage Attack(int hitsNumber)
+        protected Damage Attack(int DamageCount)
         {
             List<float> damages = new List<float>();
 
             if (IsStun == false)
             {
-                for (int i = 0; i < hitsNumber; i++)
+                for (int i = 0; i < DamageCount; i++)
                 {
                     if (Damage > 0)
                     {
-                        int minDamage = (int)(Damage > _damageDeviation ? Damage - _damageDeviation : 1);
-                        int maxDamage = (int)(Damage > _damageDeviation ? Damage + _damageDeviation : _damageDeviation * 2);
+                        int minDamage = (int)Math.Abs(Damage - _damageDeviation);
+                        int maxDamage = (int)Math.Abs(Damage + _damageDeviation);
                         damages.Add(Random.Next(minDamage, maxDamage));
 
                         StringCreator.ShowMessage(Class + " Нанес урон " + damages[i]);

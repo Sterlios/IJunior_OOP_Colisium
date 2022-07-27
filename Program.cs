@@ -5,7 +5,7 @@ namespace Colisium
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             FightRing fightRing = new FightRing("Бойцовский клуб", new StringCreator(new ConsoleDisplay()), new ConsoleDataInput());
 

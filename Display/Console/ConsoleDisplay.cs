@@ -2,9 +2,9 @@
 {
     class ConsoleDisplay : IDisplay
     {
-        public void Display(IString String)
+        public void Display(IString objectForString)
         {
-            System.Console.WriteLine(String);
+            System.Console.WriteLine(objectForString);
         }
     }
 }

@@ -2,6 +2,6 @@
 {
     interface IDisplay
     {
-        void Display(IString String);
+        void Display(IString objectForString);
     }
 }

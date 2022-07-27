@@ -46,11 +46,11 @@ namespace Colisium
                     manager.TakeUser(new User("Петя", _dataInput, _stringCreator));
                 }
 
-                manager.Work(out BaseFighter LeftFighter, out BaseFighter RightFighter);
+                manager.Work(out BaseFighter leftFighter, out BaseFighter rightFighter);
 
-                if(LeftFighter is BaseFighter && RightFighter is BaseFighter)
+                if(leftFighter is BaseFighter && rightFighter is BaseFighter)
                 {
-                    Fight fight = new Fight(LeftFighter, RightFighter, _stringCreator);
+                    Fight fight = new Fight(leftFighter, rightFighter, _stringCreator);
                     fight.Start();
                 }
             }
@@ -90,8 +90,10 @@ namespace Colisium
 
         private void InitializeManagers()
         {
-            _managers = new List<Manager>();
-            _managers.Add(new Manager("Ваня", _stringCreator));
+            _managers = new List<Manager>
+            {
+                new Manager("Ваня", _stringCreator)
+            };
         }
     }
 }

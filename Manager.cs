@@ -27,10 +27,10 @@ namespace Colisium
             User = user;
         }
 
-        public void Work(out BaseFighter LeftFighter, out BaseFighter RightFighter)
+        public void Work(out BaseFighter leftFighter, out BaseFighter rightFighter)
         {
-            LeftFighter = null;
-            RightFighter = null;
+            leftFighter = null;
+            rightFighter = null;
 
             if (Working)
             {
@@ -39,8 +39,8 @@ namespace Colisium
                 if (ToContinue())
                 {
                     ShowFighters();
-                    LeftFighter = GetFighter("слева");
-                    RightFighter = GetFighter("справа");
+                    leftFighter = GetFighter("слева");
+                    rightFighter = GetFighter("справа");
                 }
                 else
                 {
@@ -107,7 +107,7 @@ namespace Colisium
         {
             _stringCreator.ShowMessage("Доступные бойцы:");
 
-            foreach (IFighter fighter in _fighters)
+            foreach (BaseFighter fighter in _fighters)
             {
                 fighter.ShowInfo();
             }
